@@ -21,6 +21,9 @@
     "url": "https://github.com/Capitalisk/ldpos-maintenance-tool/issues"
   },
   "homepage": "https://github.com/Capitalisk/ldpos-maintenance-tool#readme",
+  "bin": {
+    "ldpos-maintenance-tool": "index.js"
+  },
   "dependencies": {
     "minimist": "^1.2.5",
     "pg": "^8.7.3"
