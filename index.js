@@ -68,6 +68,7 @@ let command = argv._[0];
       }`
     );
     client.end();
+    process.exit(0);
   } else {
     console.log(`Command ${command} was invalid`);
     client.end();
