@@ -30,7 +30,7 @@ let command = argv._[0];
       let signaturesBase64;
       try {
         let res = await util.promisify(client.query).call(client, 'SELECT signatures from blocks where height=$1', [i]);
-        signaturesBase64 = res.rows[0];
+        signaturesBase64 = res.rows[0].signatures;
       } catch (error) {
         console.error(error.message);
         process.exit(1);
@@ -46,7 +46,7 @@ let command = argv._[0];
         return;
       }
       let prunedSignatureList = signatureList.slice(0, keepSignatureCount);
-      let prunedSignaturesBase64 = Buffer.from(json.stringify(prunedSignatureList), 'utf8').toString('base64');
+      let prunedSignaturesBase64 = Buffer.from(JSON.stringify(prunedSignatureList), 'utf8').toString('base64');
 
       try {
         await util.promisify(client.query).call(client, 'UPDATE blocks SET signatures=$1 where height=$2', [prunedSignaturesBase64, i]);
