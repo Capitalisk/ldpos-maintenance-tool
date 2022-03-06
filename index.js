@@ -71,8 +71,10 @@ let command = argv._[0];
       console.log(`Pruned block signatures at height ${i}`);
     }
 
+    console.log('Vacuuming the database to reduce space usage...');
+
     try {
-      await util.promisify(client.query).call(client, 'VACUUM blocks');
+      await util.promisify(client.query).call(client, 'VACUUM FULL blocks');
     } catch (error) {
       console.error(`Failed to vacuum the database after cleanup because of error: ${error.message}`);
       process.exit(1);
