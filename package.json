@@ -1,6 +1,6 @@
 {
   "name": "ldpos-maintenance-tool",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CLI tool to maintain LDPoS postgres databases.",
   "main": "index.js",
   "scripts": {

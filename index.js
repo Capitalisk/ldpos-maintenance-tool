@@ -71,6 +71,13 @@ let command = argv._[0];
       console.log(`Pruned block signatures at height ${i}`);
     }
 
+    try {
+      await util.promisify(client.query).call(client, 'VACUUM blocks');
+    } catch (error) {
+      console.error(`Failed to vacuum the database after cleanup because of error: ${error.message}`);
+      process.exit(1);
+    }
+
     console.log(
       `Finished pruning block signatures between heights ${
         fromBlockHeight
