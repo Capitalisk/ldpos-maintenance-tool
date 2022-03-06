@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { Pool, Client } = require('pg');
 const util = require('util');
 
